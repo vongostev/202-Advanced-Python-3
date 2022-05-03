@@ -114,3 +114,6 @@ dmypy.json
 .pyre/
 *.lock
 *.dirlock
+SympyBasics.ipynb
+test_aqc.py
+ThreadsNProcesses.ipynb
