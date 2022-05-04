@@ -82,7 +82,7 @@ def healer(line: str):
 
 
 def parsing():
-    with open('C:\\Users\\Ducky\\OneDrive\\Рабочий стол\\test.txt') as f:
+    with open('C:\\Users\\Ducky\\OneDrive\\Документы\\GitHub\\202-Advanced-Python-3\\test.txt') as f:
         formulas = list()
         for item in f:
             formulas.append(re.findall(
