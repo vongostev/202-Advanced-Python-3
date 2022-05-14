@@ -116,20 +116,19 @@ def change_formula(line: str):
 
 
 if __name__ == "__main__":
-    
-with open('varya.tex', 'r') as file:
-    for line in file:
-        if '\\begin{equation}' in line:
-            left_side = line.find('\\begin{equation}') + 16
-            right_side = line.find('\\end{equation}', left_side)
-            change_formula(line[left_side:right_side])
-            line = line[:(left_side - 16)] + line[(right_side + 14):]
-        if '$' in line and not('$$' in line):
-            left_side = line.find('$') + 1
-            right_side = line.find('$', left_side)
-            change_formula(line[left_side:right_side])
-            line = line[:(left_side - 1)] + line[(right_side + 1):]
-        if '$$' in line:
-            left_side = line.find('$$') + 2
-            right_side = line.find('$$', left_side)
-            change_formula(line[left_side:right_side])
+    with open('varya.tex', 'r') as file:
+        for line in file:
+            if '\\begin{equation}' in line:
+                left_side = line.find('\\begin{equation}') + 16
+                right_side = line.find('\\end{equation}', left_side)
+                change_formula(line[left_side:right_side])
+                line = line[:(left_side - 16)] + line[(right_side + 14):]
+            if '$' in line and not('$$' in line):
+                left_side = line.find('$') + 1
+                right_side = line.find('$', left_side)
+                change_formula(line[left_side:right_side])
+                line = line[:(left_side - 1)] + line[(right_side + 1):]
+            if '$$' in line:
+                left_side = line.find('$$') + 2
+                right_side = line.find('$$', left_side)
+                change_formula(line[left_side:right_side])
