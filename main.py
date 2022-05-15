@@ -75,6 +75,7 @@ latex_greek = ['Alpha',
 
 greek_dict = dict(zip(latex_greek, unicode_greek))
 
+
 def healer(line: str):
     for greek_letter in latex_greek:
         while greek_letter in line:
@@ -97,7 +98,7 @@ def parsing():
         i += 1
 
     for i in range(len(formulas)):
-        formulas[i] = formulas[i][j].replace('\\', '')
+        formulas[i] = formulas[i][0].replace('\\', '')
 
         for greek_letter in latex_greek:
             while greek_letter in formulas[i]:
