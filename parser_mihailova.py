@@ -80,6 +80,12 @@ for i in unicode_greek:
     all_symbols_string += i
 all_symbols_string += string.ascii_letters
 
+def count_lines(filename, chunk_size=1<<13):
+    with open(filename) as file:
+        return sum(chunk.count('\n')
+                   for chunk in iter(lambda: file.read(chunk_size), ''))
+
+
 def change_formula(line: str):
 
     '''Замена дроби'''
@@ -116,11 +122,18 @@ def change_formula(line: str):
 
 
 if __name__ == "__main__":
+    buf = []
     with open('varya.tex', 'r') as file:
-        for line in file:
+        cnt = count_lines('varya.tex')
+        for i in range(cnt):
+            line = file.readline()
             if '\\begin{equation}' in line:
                 left_side = line.find('\\begin{equation}') + 16
                 right_side = line.find('\\end{equation}', left_side)
+                while (right_side == -1):
+                    i += 1
+                    line += file.readline()
+                    right_side = line.find('\\end{equation}', left_side)
                 change_formula(line[left_side:right_side])
                 line = line[:(left_side - 16)] + line[(right_side + 14):]
             if '$' in line and not('$$' in line):
@@ -132,3 +145,4 @@ if __name__ == "__main__":
                 left_side = line.find('$$') + 2
                 right_side = line.find('$$', left_side)
                 change_formula(line[left_side:right_side])
+            i += 1
