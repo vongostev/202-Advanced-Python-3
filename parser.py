@@ -113,7 +113,7 @@ def fractions(line: str):
 
     Returns
     -------
-    line : str
+    line : list of sympyfied left and right sides of equation
 
     """
     while('\\frac{' in line):
@@ -147,28 +147,32 @@ def recognize_formula(line: str):
     if line.find('=') != -1:
         left_of_equation = sympy.sympify(line[:line.find('=')])
         rigth_of_equation = sympy.sympify(line[(line.find('=') + 1):])
-        print(f'{left_of_equation} = {rigth_of_equation}')
+        # print(f'{left_of_equation} = {rigth_of_equation}')
+        return [left_of_equation, rigth_of_equation]
     else:
         equation = sympy.sympify(line)
-        print(equation)
+        return ['', equation]
+        # print(equation)
 
 
 if __name__ == "__main__":
-    
-    with open('asd.tex', 'r') as file:
+
+    with open('C:/Users/timof/Documents/GitHub/AdvPy-3/asd.tex', 'r') as file:
         data = file.readlines()
         for i in range(len(data)):
             if '\\begin{equation}' in data[i]:
                 left_side = data[i].find('\\begin{equation}') + 16
-                
-                if (data[i].find('\\end{equation}', left_side)!=-1):
-                    formula = data[i][left_side:(data[i].find('\\end{equation}', left_side))]
+
+                if (data[i].find('\\end{equation}', left_side) != -1):
+                    formula = data[i][left_side:(
+                        data[i].find('\\end{equation}', left_side))]
                 else:
-                    if (data[i + 1].find('\\end{equation}')!=-1):
-                        formula = data[i][left_side:] + data[i + 1][:(data[i + 1].find('\\end{equation}'))]
+                    if (data[i + 1].find('\\end{equation}') != -1):
+                        formula = data[i][left_side:] + data[i +
+                                                             1][:(data[i + 1].find('\\end{equation}'))]
                     else:
                         formula = data[i][left_side:] + data[i + 1]
-                    
+
                 recognize_formula(formula)
                 data[i] = data[i][:(left_side - 16)] + data[i][left_side:]
 
@@ -184,4 +188,5 @@ if __name__ == "__main__":
 
                 recognize_formula(data[i][left_side:right_side])
 
+                data[i] = data[i][:(left_side - 1)] + data[i][(right_side + 1):]
                 data[i] = data[i][:(left_side - 1)] + data[i][(right_side + 1):]
