@@ -121,8 +121,6 @@ def fractions(line: str):
         rigth_num = line.find('}', left_num)
         rigth_denum = line.find('}', rigth_num + 2)
 
-        # line = line[:left_num] + '(' + line[(left_num + 6):rigth_num] + \
-        #     ') / (' + line[(rigth_num + 2):rigth_denum] + ')'+ line[(rigth_denum + 1):]
         line = line[:left_num] + line[(left_num + 6):rigth_num] + \
             ' / ' + line[(rigth_num + 2):rigth_denum] + \
             line[(rigth_denum + 1):]
@@ -158,25 +156,32 @@ def recognize_formula(line: str):
 if __name__ == "__main__":
     
     with open('asd.tex', 'r') as file:
-        for line in file:
-            if '\\begin{equation}' in line:
-                left_side = line.find('\\begin{equation}') + 16
-                right_side = line.find('\\end{equation}', left_side)
+        data = file.readlines()
+        for i in range(len(data)):
+            if '\\begin{equation}' in data[i]:
+                left_side = data[i].find('\\begin{equation}') + 16
+                
+                if (data[i].find('\\end{equation}', left_side)!=-1):
+                    formula = data[i][left_side:(data[i].find('\\end{equation}', left_side))]
+                else:
+                    if (data[i + 1].find('\\end{equation}')!=-1):
+                        formula = data[i][left_side:] + data[i + 1][:(data[i + 1].find('\\end{equation}'))]
+                    else:
+                        formula = data[i][left_side:] + data[i + 1]
+                    
+                recognize_formula(formula)
+                data[i] = data[i][:(left_side - 16)] + data[i][left_side:]
 
-                recognize_formula(line[left_side:right_side])
+            if '$$' in data[i]:
+                left_side = data[i].find('$$') + 2
+                right_side = data[i].find('$$', left_side)
 
-                line = line[:(left_side - 16)] + line[(right_side + 14):]
+                recognize_formula(data[i][left_side:right_side])
 
-            if '$$' in line:
-                left_side = line.find('$$') + 2
-                right_side = line.find('$$', left_side)
+            if '$' in data[i] and not('$$' in data[i]):
+                left_side = data[i].find('$') + 1
+                right_side = data[i].find('$', left_side)
 
-                recognize_formula(line[left_side:right_side])
+                recognize_formula(data[i][left_side:right_side])
 
-            if '$' in line and not('$$' in line):
-                left_side = line.find('$') + 1
-                right_side = line.find('$', left_side)
-
-                recognize_formula(line[left_side:right_side])
-
-                line = line[:(left_side - 1)] + line[(right_side + 1):]
+                data[i] = data[i][:(left_side - 1)] + data[i][(right_side + 1):]
