@@ -80,12 +80,6 @@ for i in unicode_greek:
     all_symbols_string += i
 all_symbols_string += string.ascii_letters
 
-def count_lines(filename, chunk_size=1<<13):
-    with open(filename) as file:
-        return sum(chunk.count('\n')
-                   for chunk in iter(lambda: file.read(chunk_size), ''))
-
-
 def change_formula(line: str):
 
     '''Замена дроби'''
@@ -115,34 +109,38 @@ def change_formula(line: str):
     if line.find('=') != -1:
         left_of_equation = sympy.sympify(line[:line.find('=')])
         right_of_equation = sympy.sympify(line[(line.find('=') + 1):])
-        print(f'{left_of_equation} = {right_of_equation}')
+        return (f'{left_of_equation} = {right_of_equation}')
     else:
         equation = sympy.sympify(line)
-        print(equation)
+        return (equation)
 
 
 if __name__ == "__main__":
-    buf = []
+    equations = []
     with open('varya.tex', 'r') as file:
-        cnt = count_lines('varya.tex')
-        for i in range(cnt):
-            line = file.readline()
+        for line in file:
             if '\\begin{equation}' in line:
                 left_side = line.find('\\begin{equation}') + 16
                 right_side = line.find('\\end{equation}', left_side)
                 while (right_side == -1):
-                    i += 1
                     line += file.readline()
                     right_side = line.find('\\end{equation}', left_side)
-                change_formula(line[left_side:right_side])
+                equations.append(change_formula(line[left_side:right_side]))
                 line = line[:(left_side - 16)] + line[(right_side + 14):]
             if '$' in line and not('$$' in line):
                 left_side = line.find('$') + 1
                 right_side = line.find('$', left_side)
-                change_formula(line[left_side:right_side])
+                while (right_side == -1):
+                    line += file.readline()
+                    right_side = line.find('\\end{equation}', left_side)
+                equations.append(change_formula(line[left_side:right_side]))
                 line = line[:(left_side - 1)] + line[(right_side + 1):]
             if '$$' in line:
                 left_side = line.find('$$') + 2
                 right_side = line.find('$$', left_side)
-                change_formula(line[left_side:right_side])
-            i += 1
+                while (right_side == -1):
+                    line += file.readline()
+                    right_side = line.find('\\end{equation}', left_side)
+                equations.append(change_formula(line[left_side:right_side]))
+    for equation in equations:
+        print(equation)
