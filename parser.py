@@ -1,5 +1,6 @@
 import sympy
 import string
+import numpy as np
 
 unicode_greek = ['Α', 'α',
                  'Β', 'β',
@@ -156,7 +157,7 @@ def recognize_formula(line: str):
 
 
 if __name__ == "__main__":
-
+    equations = []
     with open('C:/Users/timof/Documents/GitHub/AdvPy-3/asd.tex', 'r') as file:
         data = file.readlines()
         for i in range(len(data)):
@@ -173,20 +174,26 @@ if __name__ == "__main__":
                     else:
                         formula = data[i][left_side:] + data[i + 1]
 
-                recognize_formula(formula)
+                equations.append(recognize_formula(formula))
                 data[i] = data[i][:(left_side - 16)] + data[i][left_side:]
 
             if '$$' in data[i]:
                 left_side = data[i].find('$$') + 2
                 right_side = data[i].find('$$', left_side)
 
-                recognize_formula(data[i][left_side:right_side])
+                equations.append(recognize_formula(
+                    data[i][left_side:right_side]))
 
             if '$' in data[i] and not('$$' in data[i]):
                 left_side = data[i].find('$') + 1
                 right_side = data[i].find('$', left_side)
 
-                recognize_formula(data[i][left_side:right_side])
+                equations.append(recognize_formula(
+                    data[i][left_side:right_side]))
 
                 data[i] = data[i][:(left_side - 1)] + data[i][(right_side + 1):]
                 data[i] = data[i][:(left_side - 1)] + data[i][(right_side + 1):]
+
+    for line in equations:
+        if line[0] != '':
+            print(f'{line[0]} = {line[1]}')
