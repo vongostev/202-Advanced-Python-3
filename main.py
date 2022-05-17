@@ -76,14 +76,8 @@ latex_greek = ['Alpha',
 greek_dict = dict(zip(latex_greek, unicode_greek))
 
 
-def healer(line: str):
-    for greek_letter in latex_greek:
-        while greek_letter in line:
-            line = line.replace(greek_letter, greek_dict[greek_letter])
-
-
-def parsing():
-    with open('C:\\Users\\Ducky\\OneDrive\\Документы\\GitHub\\202-Advanced-Python-3\\test.txt') as f:
+def parsing(line : str):
+    with open(line) as f:
         formulas = list()
         for item in f:
             formulas.append(re.findall(
@@ -122,4 +116,4 @@ def parsing():
 
 
 if __name__ == '__main__':
-    data = parsing()
+    data = parsing('C:\\Users\\Ducky\\OneDrive\\Документы\\GitHub\\202-Advanced-Python-3\\test.txt')
