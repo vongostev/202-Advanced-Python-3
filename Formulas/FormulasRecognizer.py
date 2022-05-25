@@ -6,7 +6,6 @@ Created on Wed May 25 02:19:00 2022
 """
 
 import sympy
-#import numpy as np
 
 LatexDict = [[],[]]
 LatexDict[0] = [
