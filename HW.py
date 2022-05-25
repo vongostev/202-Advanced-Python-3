@@ -82,3 +82,41 @@ latex_greek = ['\\Alpha',
                '\\psi',
                '\\Omega',
                '\\omega']
+
+greek_dict = dict(zip(latex_greek, unicode_greek))
+
+all_symbols_string = ''
+for i in unicode_greek:
+    all_symbols_string += i
+all_symbols_string += string.ascii_letters
+
+def change_greek(line: str):
+    """
+    latex greek -> unicode greek
+    Parameters
+    ----------
+    line : str
+    Returns
+    -------
+    line : str
+    """
+    for greek_letter in latex_greek:
+        while greek_letter in line:
+            line = line.replace(greek_letter, greek_dict[greek_letter])
+    return line
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
