@@ -4,12 +4,11 @@ import re
 
 def parsing():
     with open('example.tex') as f:
-        data = list(filter(None, f.read().split('\n')))
+        data = f.read()
         formulas = list()
-        for item in data:
-            item = item.replace('$$', '$')
-            formulas.append(re.findall(r'\\begin{equation}(.*?)\\end{equation}', item))
-            formulas.append(re.findall(r'\$([^$]+)\$', item))
+        data = data.replace('$$', '$')
+        formulas.append(re.findall(r'\\begin{equation}([\s\S]*?)\\end{equation}', data))
+        formulas.append(re.findall(r'\$([^$]+)\$', data))
 
     i = 0
     while i < len(formulas):
