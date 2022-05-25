@@ -153,6 +153,47 @@ def recognize_formula(line: str):
         return ['', equation]
         # print(equation)
 
+if __name__ == "__main__":
+    equations = []
+    with open('C:/Users/timof/Documents/GitHub/AdvPy-3/asd.tex', 'r') as file:
+        data = file.readlines()
+        for i in range(len(data)):
+            if '\\begin{equation}' in data[i]:
+                left_side = data[i].find('\\begin{equation}') + 16
+
+                if (data[i].find('\\end{equation}', left_side) != -1):
+                    formula = data[i][left_side:(
+                        data[i].find('\\end{equation}', left_side))]
+                else:
+                    if (data[i + 1].find('\\end{equation}') != -1):
+                        formula = data[i][left_side:] + data[i +
+                                                             1][:(data[i + 1].find('\\end{equation}'))]
+                    else:
+                        formula = data[i][left_side:] + data[i + 1]
+
+                equations.append(recognize_formula(formula))
+                data[i] = data[i][:(left_side - 16)] + data[i][left_side:]
+
+            if '$$' in data[i]:
+                left_side = data[i].find('$$') + 2
+                right_side = data[i].find('$$', left_side)
+
+                equations.append(recognize_formula(
+                    data[i][left_side:right_side]))
+
+            if '$' in data[i] and not('$$' in data[i]):
+                left_side = data[i].find('$') + 1
+                right_side = data[i].find('$', left_side)
+
+                equations.append(recognize_formula(
+                    data[i][left_side:right_side]))
+
+                data[i] = data[i][:(left_side - 1)] + data[i][(right_side + 1):]
+                data[i] = data[i][:(left_side - 1)] + data[i][(right_side + 1):]
+
+    for line in equations:
+        if line[0] != '':
+            print(f'{line[0]} = {line[1]}')
 
 
 
