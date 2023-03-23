@@ -116,3 +116,5 @@ dmypy.json
 *.dirlock
 SympyBasics.ipynb
 test_aqc.py
+*.npz
+*.txt

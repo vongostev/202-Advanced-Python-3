@@ -1,0 +1,8 @@
+model:
+  N: 100
+  K: 10
+  B: 25
+  NoiseMean: 0
+  NoiseScale: 10
+calc:
+  PolyfitDegree: 2
