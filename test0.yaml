@@ -3,6 +3,6 @@ model:
   K: 10
   B: 25
   NoiseMean: 0
-  NoiseScale: 10
+  NoiseScale: 0
 calc:
   PolyfitDegree: 2
