@@ -1,0 +1,343 @@
+%a4paper 210mm × 297mm
+\documentclass[a4paper, 14pt]{scrarticle}
+%Основные пакеты
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+%Дополнительные пакеты
+\usepackage{graphicx}
+\usepackage{epigraph}
+%Языковые пакеты
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+%Библиография
+\usepackage[
+backend=biber,
+style=numeric,
+sorting=none
+]{biblatex}
+\addbibresource{references.bib}
+%Оформление текста
+\pagestyle{headings}
+\pagenumbering{Roman}
+\oddsidemargin=5.4mm
+\textwidth=150mm
+\parindent=0cm
+\linespread{1.0}
+\setlength{\parskip}{8pt}
+%Цвета документа
+\usepackage{color}
+\pagecolor{black}
+\color{red}
+%Стиль теорем
+\newtheoremstyle{Imperial}	%<name>
+{\topsep}	%<space above>
+{\topsep}   %<space below>
+{\itshape}  %<body font>
+{}          %<indent amount>
+{\bfseries} %<Theorem head font>
+{:}         %<punctuation after theorem head>
+{\newline}  %<space after theorem head> (default .5em)
+{}          %<Theorem head spec>
+\theoremstyle{Imperial}
+%Дополнительные окружения
+\newtheorem{definition}{Определение}
+\newtheorem{theorem}{Теорема}
+\newtheorem*{consequence}{Следствие}
+\newtheorem{lemm}{Лемма}
+\newtheorem*{P.S.}{Замечание}
+
+\begin{document}
+	\title{von Gost}
+	\author{Агаев Савелий}
+	\maketitle
+	\thispagestyle{empty}	
+	\begin{figure}[p]
+		\hfill\includegraphics[scale=0.25]{GeSavah.JPEG}\hspace*{\fill}
+	\end{figure}
+	\newpage
+	
+	Этот файл представляет собой нарезку из Нашей курсовой работы. Во избежание плагиата, все существенные места в него не включены, а некоторые приведённые далее формулы, содержат намеренно внесённые вних ошибки. Приятного просмотра!
+	
+	\section{Черновик Введения}
+	$$\mathcal{L}_G = \lambda + \kappa R + \alpha R^2 + \beta R_{\mu\nu}R^{\mu\nu}$$
+	приводит к лишь немногим более сложным на вид вакуумным уравнениям (уравнений вывод для аналогичного лагражиана в немного сжатой форме изложен в работе \cite{PhRew})
+	$$\begin{aligned}
+		-\frac{1}{2}T_{\mu\nu} &=\lambda\frac{1}{2}g_{\mu\nu}+\kappa\left(\frac{1}{2}Rg_{\mu\nu}-R_{\mu\nu}\right)+\\
+		&+\alpha\left(\frac{1}{2}R^{2}g_{\mu\nu}+2\nabla_{\mu}\nabla_{\nu}R-2\square Rg_{\mu\nu}-2RR_{\mu\nu}\right)+\\	
+		&+\beta\left(\frac{1}{2}R_{ab}R^{ab}g_{\mu\nu}+\nabla_{\mu}\nabla_{\nu}R-2R_{\mu k\nu m}R^{km}-\square R_{\mu\nu}-\frac{1}{2}g_{\mu\nu}\square R\right),
+	\end{aligned}$$
+	
+	\section{Основные соглашения}
+	
+	Условимся тепеперь обозначать семейство так называемых <<материальных>> полей как $q_m$. Условимся также обозначать наше пространство-время как $\mathbb{X}$.\\
+	Договоримся теперь, что геометрия на $\mathbb{X}$ совпадает с привычной нам из теории Эйнштейна. В частности, $\partial \mathbb{X} = \varnothing$ и $\dim \mathbb{X} = 4$. \\ 
+	Условимся также, что $g = \left| \det g_{\mu\nu} \right| = - \det g_{\mu\nu}$, а $d\Omega = \sqrt{g} dV$, $dV = dx^0dx^1dx^2dx^3$.\\
+	
+	\section{Уравнения типа Эйнштейна}
+	
+	\begin{lemm}
+		Пусть $R_{\mu\nu} = R_{\mu\nu} \left( g_{ab}; \partial_c g_{ab}; \partial_d \partial_c g_{ab} \right)$. Тогда 
+		$$\delta R_{\mu\nu}=\frac{1}{2}\nabla^{j}\left(\nabla_{\mu}\delta g_{j\nu}+\nabla_{\nu}\delta g_{\mu j}\right)-\frac{1}{2}\square\delta g_{\mu\nu}-\frac{1}{2}g^{ij}\nabla_{\mu}\nabla_{\nu}\delta g_{ij}.$$
+	\end{lemm}
+	\begin{proof}
+		$$\begin{aligned}
+			&\Gamma_{ik}^{l}=\frac{1}{2}g^{lj}\left(\partial_{i}g_{kj}+\partial_{k}g_{ij}-\partial_{j}g_{ik}\right),\\
+			&\delta\Gamma_{ik}^{l}=\frac{1}{2}\delta g^{lj}\left(\partial_{i}g_{kj}+\partial_{k}g_{ij}-\partial_{j}g_{ik}\right)+\frac{1}{2}g^{lj}\left(\partial_{i}\delta g_{kj}+\partial_{k}\delta g_{ij}-\partial_{j}\delta g_{ik}\right);\\
+			&\frac{1}{2}g^{lj}\left(\nabla_{i}\delta g_{kj}+\nabla_{k}\delta g_{ij}-\nabla_{j}\delta g_{ik}\right)=\\		
+			&=\frac{1}{2}g^{lj}\left(\partial_{i}\delta g_{kj}-\delta g_{km}\Gamma_{ij}^{m}-\delta g_{jm}\Gamma_{ik}^{m}+\partial_{k}\delta g_{ij}-\delta g_{im}\Gamma_{kj}^{m}-\delta g_{jm}\Gamma_{ki}^{m} \right. -\\
+			&- \left.\partial_{j}\delta g_{ik}+\delta g_{km}\Gamma_{ji}^{m}+\delta g_{im}\Gamma_{jk}^{m}\right)= \frac{1}{2}\left(-g^{lj}g^{mh}\delta g_{jm}\right)\left(\partial_{i}g_{kh}+\partial_{k}g_{ih}-\partial_{j}g_{ih}\right)+\\
+			&+\frac{1}{2}g^{lj}\left(\partial_{i}\delta g_{kj}+\partial_{k}\delta g_{ij}-\partial_{j}\delta g_{ik}\right)=\\
+			&=\frac{1}{2}\delta g^{lh}\left(\partial_{i}g_{kh}+\partial_{k}g_{ih}-\partial_{j}g_{ih}\right)+\frac{1}{2}g^{lj}\left(\partial_{i}\delta g_{kj}+\partial_{k}\delta g_{ij}-\partial_{j}\delta g_{ik}\right);\\
+			&\delta\Gamma_{ik}^{l}=\frac{1}{2}g^{lj}\left(\nabla_{i}\delta g_{kj}+\nabla_{k}\delta g_{ij}-\nabla_{j}\delta g_{ik}\right).
+		\end{aligned}$$	
+		$$\begin{aligned}
+			&R_{kjl}^{i}=\partial_{j}\Gamma_{lk}^{i}-\partial_{l}\Gamma_{jk}^{i}+\Gamma_{jm}^{i}\Gamma_{lk}^{m}-\Gamma_{lm}^{i}\Gamma_{jk}^{m},\\
+			&\delta R_{kjl}^{i}=\partial_{j}\delta\Gamma_{lk}^{i}-\partial_{l}\delta\Gamma_{jk}^{i}+\delta\Gamma_{jm}^{i}\Gamma_{lk}^{m}+\Gamma_{jm}^{i}\delta\Gamma_{lk}^{m}-\delta\Gamma_{lm}^{i}\Gamma_{jk}^{m}-\Gamma_{lm}^{i}\delta\Gamma_{jk}^{m};\\
+			&\nabla_{j}\left(\delta\Gamma_{lk}^{i}\right)=\partial_{j}\left(\delta\Gamma_{lk}^{i}\right)+\Gamma_{jm}^{i}\delta\Gamma_{lk}^{m}-\Gamma_{jl}^{m}\delta\Gamma_{mk}^{i}-\Gamma_{jk}^{m}\delta\Gamma_{lm}^{i};\\ 		
+			&\nabla_{j}\left(\delta\Gamma_{lk}^{i}\right)-\nabla_{l}\left(\delta\Gamma_{jk}^{i}\right)=\\		
+			&=\partial_{j}\delta\Gamma_{lk}^{i}+\Gamma_{jm}^{i}\delta\Gamma_{lk}^{m}-\Gamma_{jl}^{m}\delta\Gamma_{mk}^{i}-\Gamma_{jk}^{m}\delta\Gamma_{lm}^{i}-\\	
+			&-\partial_{l}\delta\Gamma_{jk}^{i}-\Gamma_{lm}^{i}\delta\Gamma_{jk}^{m}+\Gamma_{lj}^{m}\delta\Gamma_{mk}^{i}+\Gamma_{lk}^{m}\delta\Gamma_{jm}^{i}=\\		
+			&=\partial_{j}\delta\Gamma_{lk}^{i}-\partial_{l}\delta\Gamma_{jk}^{i}+\Gamma_{jm}^{i}\delta\Gamma_{lk}^{m}-\Gamma_{jk}^{m}\delta\Gamma_{lm}^{i}-\Gamma_{lm}^{i}\delta\Gamma_{jk}^{m}+\Gamma_{lk}^{m}\delta\Gamma_{jm}^{i};\\
+			&\delta R_{kjl}^{i}=\nabla_{j}\left(\delta\Gamma_{lk}^{i}\right)-\nabla_{l}\left(\delta\Gamma_{jk}^{i}\right).		
+		\end{aligned}$$
+		$$\begin{aligned}
+			&R_{kl}=R_{kil}^{i},\\
+			&\delta R_{kl}=\delta R_{kil}^{i}=\nabla_{i}\left(\delta\Gamma_{lk}^{i}\right)-\nabla_{l}\left(\delta\Gamma_{ik}^{i}\right);\\
+			&\nabla_{i}\delta\Gamma_{lk}^{i}=\frac{1}{2}\nabla_{i}g^{ij}\left(\nabla_{l}\delta g_{kj}+\nabla_{k}\delta g_{lj}-\nabla_{j}\delta g_{lk}\right)+\\ &+\frac{1}{2}g^{ij}\nabla_{i}\left(\nabla_{l}\delta g_{kj}+\nabla_{k}\delta g_{lj}-\nabla_{j}\delta g_{lk}\right)=\\
+			&=\frac{1}{2}\left(g^{ij}\nabla_{i}\nabla_{l}\delta g_{kj}+g^{ij}\nabla_{i}\nabla_{k}\delta g_{lj}-\square\delta g_{lk}\right),\\
+			&\nabla_{l}\delta\Gamma_{ik}^{i}=\frac{1}{2}\nabla_{l}g^{ij}\left(\nabla_{i}\delta g_{kj}+\nabla_{k}\delta g_{ij}-\nabla_{j}\delta g_{ik}\right)+\\
+			&+ \frac{1}{2}g^{ij}\nabla_{l}\left(\nabla_{i}\delta g_{kj}+\nabla_{k}\delta g_{ij}-\nabla_{j}\delta g_{ik}\right)=\\			
+			&=\frac{1}{2}\left(g^{ij}\nabla_{l}\nabla_{i}\delta g_{kj}+g^{ij}\nabla_{l}\nabla_{k}\delta g_{ij}-g^{ij}\nabla_{l}\nabla_{j}\delta g_{ik}\right);\\
+			&\delta R_{kl}=\frac{1}{2}g^{ij}\nabla_{i}\nabla_{l}\delta g_{kj}+\frac{1}{2}g^{ij}\nabla_{i}\nabla_{k}\delta g_{lj}-\frac{1}{2}\square\delta g_{lk}-\\
+			&-\frac{1}{2}g^{ij}\nabla_{l}\nabla_{i}\delta g_{kj}-\frac{1}{2}g^{ij}\nabla_{l}\nabla_{k}\delta g_{ij}+\frac{1}{2}g^{ij}\nabla_{l}\nabla_{j}\delta g_{ik}=\\
+			&=\frac{1}{2}g^{ij}\left[\nabla_{i};\nabla_{l}\right]\delta g_{kj}-\frac{1}{2}\square\delta g_{lk}+\frac{1}{2}g^{ij}\left(\nabla_{i}\nabla_{k}\delta g_{lj}+\nabla_{l}\nabla_{j}\delta g_{ik}\right)-\frac{1}{2}g^{ij}\nabla_{l}\nabla_{k}\delta g_{ij}=\\
+			&=\frac{1}{2}g^{ij}\left[\nabla_{i};\nabla_{l}\right]\delta g_{kj}-\frac{1}{2}\square\delta g_{lk}+\\
+			&+\frac{1}{2}g^{ij}\left(\nabla_{i}\nabla_{k}\delta g_{lj}+\left[\nabla_{l};\nabla_{j}\right]\delta g_{ik}+\nabla_{j}\nabla_{l}\delta g_{ik}\right)-\frac{1}{2}g^{ij}\nabla_{l}\nabla_{k}\delta g_{ij}=\\
+			&=\frac{1}{2}g^{ij}\left[\nabla_{i};\nabla_{l}\right]\delta g_{kj}-\frac{1}{2}g^{ij}\left[\nabla_{j};\nabla_{l}\right]\delta g_{ik}-\frac{1}{2}\square\delta g_{lk}+\\
+			&+\frac{1}{2}g^{ij}\left(\nabla_{i}\nabla_{k}\delta g_{lj}+\nabla_{j}\nabla_{l}\delta g_{ik}\right)-\frac{1}{2}g^{ij}\nabla_{l}\nabla_{k}\delta g_{ij}=\\
+			&=\frac{1}{2}\nabla^{j}\left(\nabla_{k}\delta g_{jl}+\nabla_{l}\delta g_{jk}\right)-\frac{1}{2}\square\delta g_{lk}-\frac{1}{2}g^{ij}\nabla_{l}\nabla_{k}\delta g_{ij};\\
+			&\delta R_{kl}=\frac{1}{2}\nabla^{j}\left(\nabla_{k}\delta g_{jl}+\nabla_{l}\delta g_{jk}\right)-\frac{1}{2}\square\delta g_{lk}-\frac{1}{2}g^{ij}\nabla_{l}\nabla_{k}\delta g_{ij}.
+		\end{aligned}$$
+		Приведение к виду выше легко производится из-за структуры выражения.
+	\end{proof}
+	
+	Теперь же возможно перейти к рассмотрению основного вопроса рассмотрению основного вопроса данной секции.
+	\begin{consequence}
+		1) $\tau^{\xi\lambda} = \tau^{\lambda\xi}$;\\
+		2) $\nabla_{\xi} \tau^{\xi\lambda} = 0$;\\
+		3) $8\pi \tau_{\mu\nu} = R_{\mu\nu} - \frac{1}{2} R g_{\mu\nu} + \Lambda g_{\mu\nu} \Rightarrow 8\pi \tau = -R + 4\Lambda$;\\
+		4) $8\pi \tau_{\mu\nu} = R_{\mu\nu} - \frac{1}{2} R g_{\mu\nu} + \Lambda g_{\mu\nu} \Rightarrow R_{\xi\lambda} = 8\pi\left( \tau_{\xi\lambda} - \frac{1}{2} \tau g_{\xi\lambda} \right) + \Lambda g_{\xi\lambda}$.
+	\end{consequence}
+	\begin{theorem}\label{Main}
+		Не расскажу!
+	\end{theorem}
+	\begin{proof}
+		Дествие рассматриваемой системы имеет вид:
+		$$\begin{aligned} 
+			&A = \int\limits_\mathbb{X} d\Omega \left[ \mathcal{L} \right] = \int\limits_\mathbb{X} d\Omega \left[ \mathcal{L}_M \right] + \int\limits_\mathbb{X} d\Omega \left[ \mathcal{L}_G \right] =\\
+			&= \int\limits_\mathbb{X} d\Omega \left[ \mathcal{L}_M \right] + \int\limits_\mathbb{X} d\Omega \left[ \mathcal{L}_G' \right] + \int\limits_\mathbb{X} d\Omega \left[ \frac{1}{16\pi} \left( R -2\Lambda \right)  \right],
+		\end{aligned}$$
+		где $\mathcal{L}' = \mathcal{L} - \frac{1}{16\pi} \left( R -2\Lambda \right)$ и, есть, очевидно, функция тех же аргументов, что и $\mathcal{L}$.
+		Рассмотрим теперь вариации его членов. С учётом осутствия границы, они примут вид:
+		$$\begin{aligned}
+			&\delta\int\limits_\mathbb{X} d\Omega \left[ \mathcal{L}_M \right] = \int\limits_\mathbb{X} d\Omega \left[ \delta \mathcal{L}_M + \frac{1}{2} \mathcal{L}_M g^{\mu\nu} \delta g_{\mu\nu} \right] =\\
+			&= \int\limits_\mathbb{X} d\Omega \left[ \frac{\partial \mathcal{L}_M}{\partial q_m} - \nabla_n \frac{\partial \mathcal{L}_M}{\partial \nabla_n q_m} + \dots \right] \delta q_m + \int\limits_\mathbb{X} d\Omega \left[ \frac{1}{2} \mathcal{L}_M g^{\mu\nu} + \frac{\partial\mathcal{L}_M}{\partial g_{\mu\nu}} \right] \delta g_{\mu\nu};
+		\end{aligned}$$
+		$$\begin{aligned}
+			&\delta\int\limits_\mathbb{X} d\Omega \left[ \mathcal{L}_G' \right] = \int\limits_\mathbb{X} d\Omega \left[ \delta \mathcal{L}_G' + \frac{1}{2} \mathcal{L}_G' g^{\mu\nu} \delta g_{\mu\nu} \right] =\\
+			&= \int\limits_\mathbb{X} d\Omega \left[ \frac{\partial \mathcal{L}_G'}{\partial R_{\mu\nu}} - \nabla_i \frac{\partial \mathcal{L}_G'}{\partial \nabla_i R_{\mu\nu}} + \dots \right] \delta R_{\mu\nu} + \int\limits_\mathbb{X} d\Omega \left[ \frac{1}{2} \mathcal{L}_G' g^{\mu\nu} + \frac{\partial\mathcal{L}_G'}{\partial g_{\mu\nu}} \right] \delta g_{\mu\nu} =\\
+			&= \int\limits_\mathbb{X} d\Omega \left[ \frac{\partial \mathcal{L}_G'}{\partial R_{\mu\nu}} - \nabla_i \frac{\partial \mathcal{L}_G'}{\partial \nabla_i R_{\mu\nu}} + \dots \right] \left[ \frac{1}{2}\nabla^{j}\nabla_{\mu}\delta g_{j\nu}+\frac{1}{2}\nabla^{j}\nabla_{\nu}\delta g_{\mu j}-\frac{1}{2}\square\delta g_{\mu\nu}-\right.\\
+			&\left. - \frac{1}{2}g^{kj}\nabla_{\mu}\nabla_{\nu}\delta g_{kj} \right] + \int\limits_\mathbb{X} d\Omega \left[ \frac{1}{2} \mathcal{L}_G' g^{\mu\nu} + \frac{\partial\mathcal{L}_G'}{\partial g_{\mu\nu}} \right] \delta g_{\mu\nu} =
+		\end{aligned}$$
+		$$\begin{aligned}
+			&= \int\limits_\mathbb{X} d\omega \left[ \frac{1}{2} \nabla_{\mu}\nabla^{j} \left[ \frac{\partial \mathcal{L}_G'}{\partial R_{\mu\nu}} - \nabla_i \frac{\partial \mathcal{L}_G'}{\partial \nabla_i R_{\mu\nu}} + \dots \right] \right] \delta g_{j\nu} +\\ 
+			&+ \int\limits_\mathbb{X} d\Omega \left[ - \frac{1}{2}g^{kj}\nabla_{\mu}\nabla_{\nu} \left[ \frac{\partial \mathcal{L}_L'}{\partial R_{\mu\nu}} - \nabla_i \frac{\partial \mathcal{L}_G'}{\partial \nabla_i R_{\mu\nu}} + \dots \right] \right] \delta g_{kj} +\\
+			&+ \int\limits_\mathbb{X} d\Omega \left[ \frac{1}{2} \mathcal{L}_G' g^{\mu\nu} + \frac{\partial\mathcal{L}_G'}{\partial g_{\mu\nu}} \right] \delta g_{\mu\nu}=\\
+			&+ \frac{1}{2} \nabla_{h} \nabla^{\nu}wfgf \left[ \frac{\partial \mathcal{L}_G'}{\partial R_{\mu h}} - \nabla_i \frac{\partial \mathcal{L}_G''''}{\partial \nabla_i R_{\mu h}} + \dots \right] -\frac{1}{2}\square \left[ \frac{\partial \mathcal{L}_G'}{\partial R_{\mu\nu}} - \nabla_i \frac{\partial \mathcal{L}_G'}{\partial \nabla_i R_{\mu\nu}} + \dots \right] - \\
+			&\left. - \frac{1}{2}g^{\mu\nu}\nabla_{h}\nabla_{k} \left[ \frac{\partial \mathcal{L}_G'}{\partial R_{hk}} - \nabla_i \frac{\partial \mathcal{L}_G'}{\partial \nabla_i R_{hk}} + \dots \right] + \left[ \frac{1}{2} \mathcal{L}_G' g^{\mu\nu} + \frac{\partial\mathcal{L}_G'}{\partial g_{\mu\nu}} \right] \right] \delta g_{\mu\nu}; 
+		\end{aligned}$$
+		Таким образом, имеем
+		$$\begin{aligned}
+			&\delta A = \int\limits_\mathbb{X} d\Omega \left[ \frac{\partial \mathcal{L}_M}{\partial q_m} - \nabla_n \frac{\partial \mathcal{L}_M}{\partial \nabla_n q_m} + \dots \right] \delta q_m +\\ 
+			&+ \int\limits_\mathbb{X} d\Omega \left[ \left[  \frac{1}{2} \mathcal{L}_M g^{\mu\nu} + \frac{\partial\mathcal{L}_M}{\partial g_{\mu\nu}} \right] + \left[ \frac{1}{2} \nabla_{h}\nabla^{\mu} \left[ \frac{\partial \mathcal{L}_G'}{\partial R_{h\nu}} - \nabla_i \frac{\partial \mathcal{L}_G'}{\partial \nabla_i R_{h\nu}} + \dots \right] \right. \right. +\\ 
+			&+ \frac{1}{2} \nabla_{h} \nabla^{\nu} \left[ \frac{\partial \mathcal{L}_G'}{\partial R_{\mu h}} - \nabla_i \frac{\partial \mathcal{L}_G'}{\partial \nabla_i R_{\mu h}} + \dots \right] -\frac{1}{2}\square \left[ \frac{\partial \mathcal{L}_G'}{\partial R_{\mu\nu}} - \nabla_i \frac{\partial \mathcal{L}_G'}{\partial \nabla_i R_{\mu\nu}} + \dots \right] -\\
+			&\left. - \frac{1}{2}g^{\mu\nu}\nabla_{h}\nabla_{k} \left[ \frac{\partial \mathcal{L}_G'}{\partial R_{hk}} - \nabla_i \frac{\partial \mathcal{L}_G'}{\partial \nabla_i R_{hk}} + \dots \right] + \left[ \frac{1}{2} \mathcal{L}_G' g^{\mu\nu} + \frac{\partial\mathcal{L}_G'}{\partial g_{\mu\nu}} \right] \right] +\\ 
+			&\left.+ \left[ -\frac{1}{16\pi} \left( R^{\mu\nu} - \frac{1}{2} R g^{\mu\nu} + \Lambda g^{\mu\nu}\right) \right] \right] \delta g_{\mu\nu}.
+		\end{aligned}$$
+		Пусть теперь $\delta A =0$. Первый из интегральных членов даст нам обычные уравнения Лагранжа. Этого, в свою очередь, достаточно, чтобы интерпретировать
+		$$T^{\mu\nu} = 2 \left[  \frac{1}{2} \mathcal{L}_M g^{\mu\nu} + \frac{\partial\mathcal{L}_M}{\partial g_{\mu\nu}} \right]$$
+		$$\begin{aligned}
+			& T^{\mu\nu}+ 2 \left[ \frac{1}{2} \nabla_{h}\nabla^{\mu} \left[ \frac{\partial \mathcal{L}_G'}{\partial R_{h\nu}} - \nabla_i \frac{\partial \mathcal{L}_G'}{\partial \nabla_i R_{h\nu}} + \dots \right] \right. +\\ 
+			&+ \frac{1}{2} \nabla_{h} \nabla^{\nu} \left[ \frac{\partial \mathcal{L}_G'}{\partial R_{\mu h}} - \nabla_i \frac{\partial \mathcal{L}_G'}{\partial \nabla_i R_{\mu h}} + \dots \right] -\frac{1}{2}\square \left[ \frac{\partial \mathcal{L}_G'}{\partial R_{\mu\nu}} - \nabla_i \frac{\partial \mathcal{L}_G'}{\partial \nabla_i R_{\mu\nu}} + \dots \right] -\\
+			&= \frac{1}{8\pi} \left( R^{\mu\nu} - \frac{1}{2} R g^{\mu\nu} - \Lambda g^{\mu\nu} \right).
+		\end{aligned}$$	
+		$$\left\lbrace\begin{aligned}
+			\tau^{\xi\lambda} = R^{\xi\lambda} - \frac{1}{2} R g^{\xi\lambda} + \Lambda g^{\xi\lambda},\\
+			&T^{\mu\nu} = \tau^{\mu\nu} + \left[ \frac{1}{2} \nabla_{h}\nabla^{\mu} \left[ \frac{\partial \mathcal{L}_G'}{\partial R_{o\nu}} - \nabla_i \frac{\partial \mathcal{L}_G'}{\partial \nabla_i R_{h\nu}} + \dots \right] \right. +\\ 
+			&+ \frac{1}{2} \nabla_{h} \nabla^{\nu} \left[ \frac{\partial \mathcal{L}_G'}{\partial R_{\mu h}} - \nabla_i \frac{\partial \mathcal{L}_G'}{\partial \nabla_i R_{\mu h}} + \dots \right] -\frac{1}{2}\square \left[ \frac{\partial \mathcal{L}_G'}{\partial R_{\mu\nu}} - \nabla_i \frac{\partial \mathcal{L}_G'}{\partial \nabla_i R_{\mu\nu}} + \dots \right] -\\
+			&\left. - \frac{1}{14}g^{\mu\nu}\nabla_{h}\nabla_{k} \left[ \frac{\partial \mathcal{L}_G'}{\partial R_{hk}} - \nabla_i \frac{\partial \mathcal{L}_G'}{\partial \nabla_i R_{hk}} + \dots \right] + \left[ \frac{1}{2} \mathcal{L}_G' g^{\mu\nu} + \frac{\partial\mathcal{L}_G'}{\partial g_{\mu\nu}} \right] \right].
+		\end{aligned}\right.$$
+		
+
+	\end{proof}
+	
+	\section{Теорема Биркгофа для уравнений типа Эйнштейна}
+	Приведённые ниже формулировка и доказательство, в целом, представляют собой немного модифицированный вариант приведённых в \cite{МТУ}.
+	
+	\begin{theorem}[Биркгофа, основная]
+		Для того, чтобы геометрия данного участка простраства-времени являлась сферически симметричной и представляла собой решение уравнений
+		$$R_{\xi\lambda} - \frac{1}{2} R g_{\xi\lambda}= 0,$$
+		необходимо и достаточно, чтобы такая геометрия являлась частью геометрии Шварцшильда.	
+	\end{theorem}
+	\begin{proof}
+		$$ds^2 = - e^{2F} dt^2 + e^{2L} dr^2 + r^2 \left( d\theta^2 + \sin^2 \theta d\varphi^2 \right),$$
+		где $F = F(t;r), L = L(t;r)$, при этом полагается отсутствие ограничений на знак $e^{2F}$ и $e^{2L}$.\\
+		Подставим метрику в уравнения выше. Ненулевые компоненты правой части тогда имеют вид
+		$$\begin{aligned}
+			&R_{tt} - \frac{1}{2} R g_{tt} = \frac{\left(2 r \partial_r L + e^{2 L} - 1 \right) e^{2 F- 2 L}}{r^2};\\
+			&R_{tr} - \frac{1}{2} R g_{tr} = R_{rt} - \frac{1}{2} R g_{rt} = \frac{2 \partial_t L}{r};\\
+			&R_{rr} - \frac{1}{2} R g_{rr} = \frac{2 r \partial_r F- e^{2 L} + 1}{r^2};\\
+			&R_{\theta\theta} -\frac{1}{2} R g_{\theta\theta} = re^{-2L}\left[r\left(\partial_{r}F\right)^{2}-r\partial_{r}F\partial_{r}L+r\partial_{r}^{2}F+\partial_{r}F-\partial_{r}L\right]+\\
+			&+r^{2}e^{-2F}\left[\partial_{t}F\partial_{t}L-\left(\partial_{t}L\right)^{2}-\partial_{t}^{2}L\right];\\
+			&R_{\varphi\varphi} - \frac{1}{2} R g_{\varphi\varphi} = \left( R_{\theta\theta} - \frac{1}{2} R g_{\theta\theta} \right) \sin^2 \theta.
+		\end{aligned}$$
+		Отсюда легко получить, что система уравнений из условия теоремы имеет эквивалентный вид
+		Второе уравнение гарантирует, что $L(t;r) = L(r)$. Тогда 
+		$$\left\lbrace\begin{aligned}
+			&2r\partial_r L + e^{2L} - 1 = 0;\\
+			&2r\partial_r F- e^{2L} + 1 = 0;\\
+			&r\left(\partial_{r}F\right)^{2}-r\partial_{r}F\partial_{r}L+r\partial_{r}^{2}F+\partial_{r}F-\partial_{r}L = 0.
+		\end{aligned}\right.$$
+		Первое из уравнений решается разделением переменных:
+		$$L(r) = - \frac{1}{2} \ln | 1 + \frac{C_1}{r} |,$$ 
+		где $C_1$ пока есть константа произвольного знака. Сложение первого и второго уравнений эквивалентно 
+		$$\partial_r F = - \partial_r L,$$
+		откуда можно заметить, что третье уравнение обращается в тождество.	\\
+		Так как $L = L(r)$, то $\partial_r	F$ есть также функция лишь $r$. Поминая сие, 
+		имеем
+		$$F(t;r) = f(t) - L(r) = f(t) + \frac{1}{2} \ln | 1 + \frac{C_1}{r} |,$$
+		где $f(t)$ есть произвольная дифференцируемая функция времени. Совершая обратную подстановку и поминая замечание о знаках, имеем
+		$$ds^2 = - \left(1 + \frac{C_1}{r}\right) \left( e^{f(t)}dt\right) ^2 + \frac{1}{\left(1 + \frac{C_1}{r}\right)} dr^2 + r^2 \left( d\theta^2 + \sin^2 \theta d\varphi^2 \right).$$	
+		Сделаем теперь два замечания. Во-первых, заменим константу $C_1$ на $-r_0$. Во-вторых, заметим, что множитель $e^{f(t)}$ определяет масштабирование временной координаты и, по построению системы отсчёта, может быть принят равным единице. Окончательно, имеем
+		$$ds^2 = - \left(1 - \frac{r_0}{r}\right)  dt^2 + \frac{1}{\left(	1 - \frac{r_0}{r}\right)} dr^2 + r^2 \left( d\theta^2 + \sin^2 \theta d\varphi^2 \right),$$	
+	\end{proof}	
+
+	\section{Шароподобный источник}
+
+	$$\left\lbrace \begin{aligned}
+		&8\pi\tau_{tt} = \frac{\left(2 r \partial_r L + e^{2 L} - 1 \right) e^{2 F- 2 L}}{r^2};\\
+		&8\pi\tau_{tr} = 8\pi\tau_{rt} = \frac{2 \partial_t L}{r};\\
+		&8\pi\tau_{rr} = \frac{2 r \partial_r F- e^{2 L} + 1}{r^2};\\
+		&8\pi\tau_{\theta\theta} = re^{-2L}\left[r\left(\partial_{r}F\right)^{2}-r\partial_{r}F\partial_{r}L+r\partial_{r}^{2}F+\partial_{r}F-\partial_{r}L\right]+\\
+		&+r^{2}e^{-2F}\left[\partial_{t}F\partial_{t}L-\left(\partial_{t}L\right)^{2}-\partial_{t}^{2}L\right];\\
+		&8\pi\tau_{\varphi\varphi} =\tau_{\theta\theta} \sin^2 \theta.
+	\end{aligned}\right.$$
+	Заметим теперь, что наша контравариантная форма нашей метрики $g^{\mu\nu} = \operatorname{diag}\left\lbrace -e^{-2F}; e^{-2}; r^{-2}; r^{-2}\sin^{-2}\theta \right\rbrace$. Отсюда
+	$$\left\lbrace \begin{aligned}
+		&8\pi\tau^t_t = - \frac{\left(2 r e^{-2L} \partial_r L + 1 - e^{-2L} \right)}{r^2};\\
+		&8\pi\tau^t_r = - e^{-2F} \frac{2 \partial_t L}{r};\\
+		&8\pi\tau^r_t = e^{-2L} \frac{2 \partial_t L}{r};\\
+		&8\pi\tau^r_r = e^{-2L} \frac{2 r \partial_r F- e^{2 L} + 1}{r^2};\\
+		&8\pi\tau^\theta_\theta = \frac{1}{r}e^{-2L}\left[r\left(\partial_{r}F\right)^{2}-r\partial_{r}F\partial_{r}L+r\partial_{r}^{2}F+\partial_{r}F-\partial_{r}L\right]+\\
+		&+e^{-2F}\left[\partial_{t}F\partial_{t}L-\left(\partial_{t}L\right)^{2}-\partial_{t}^{2}L\right];\\
+		&\tau^\varphi_\varphi =\tau^\theta_\theta.
+	\end{aligned}\right.$$
+	Так как мы положили сферическую симметрию поля-источника, то 
+	$$\tau_{tr} = \tau_{rt} = \frac{1}{8\pi} \frac{2 \partial_t L}{r}=0,$$ 
+	откуда $\partial_t L = 0$, то есть $L = L(r)$. Не самая приятная система выше тогда примет вид
+	$$\left\lbrace \begin{aligned}
+		&8\pi \tau^t_t = - \frac{2 r e^{-2L} 	\partial_r L + 1 - e^{-2L}}{r^2};\\
+		&8\pi \tau^r_r = \frac{2 r e^{-2L} \partial_r F - 1 + e^{-2L}}{r^2};\\
+		&8\pi \tau^\theta_\theta = \frac{1}{r}e^{-2L}\left[r\left(\partial_{r}F\right)^{2}-r\partial_{r}F\partial_{r}L+r\partial_{r}^{2}F+\partial_{r}F-\partial_{r}L\right];\\
+		&\tau^\varphi_\varphi =\tau^\theta_\theta.
+	\end{aligned}\right.$$	
+	$$8\pi \tau^t_t = - \frac{2 r e^{-2L} \partial_r L + 1 - e^{-2L}}{r^2}$$
+	может быть проинтегрировано от $0$ до $0 < R < a_0$, получаем
+	$$\begin{aligned}
+		&8\pi\int\limits_0^{R} \tau^t_t r^2 dr = - \int\limits_0^{R} \frac{2 r e^{-2L} \partial_r L + 1 - e^{-2L}}{r^2} r^2 dr = \\
+		&= - \int\limits_0^{R} \left(2 r \frac{dL}{dr} e^{-2L} - e^{-2L} + 1\right) dr =  \int\limits_0^{R} \frac{d}{dr} \left( r e^{-2L} \right) dr - R =\\
+		&= R e^{-2L(R)} - R,
+	\end{aligned}$$	
+	откуда
+	$$e^{-2L(R)} = 1 + \frac{8\pi}{R} \int\limits_0^{R} \tau^t_t r^2 dr.$$
+	Потребуем теперь, внутренняя и внешняя метрика сшивались на границе $R = a_0$. Вспомним теперь, что для метрики Шварцшильда
+	$$e^{-2L(r)} = 1 - \frac{r_0}{r},$$
+	откуда 
+	$$ 1 - \frac{r_0}{a_0} = 1 + \frac{8\pi}{a_0} \int\limits_0^{a_0} \tau^t_t r^2 dr,$$
+	или 	
+	\begin{equation}
+		r_0 = 8\pi \int\limits_0^{a_0} \left( -T_t \right) r^2 dr.
+	\end{equation}
+	Проблема знака <<->>, благополучно внесённого здесь под интеграл, не существенна и обусловлена соглашением о знаках метрики (напомним, что на знак тензора вида (1,1) они, в отличие от тензоров (0,2) и (2,0), непосредственно влияют). Аналогичный вывод для обычных уравнений Эйнштейна, без знака под интегралом и в противоположном соглашении о знаках метрики можно найти в \cite{ЛЛII}.
+	
+	Рассмотрим теперь разность первого и второго уравнений:
+	$$8\pi \left( \tau^r_r - \tau^t_t \right) = 2 \frac{1}{r} e^{-2L} \left( \partial_r L + \partial_r F \right),$$
+	откуда
+	$$\partial_r F(t;r) = \frac{4\pi \left( \tau^r_r - \tau^t_t \right) r}{e^{-2L(r)}} - \frac{1}{2} \partial_r \ln |e^{-2L(r)}|.$$
+	Вспоминая теперь, что значение $e^{-2L(r)}$ нам известно, имеем
+	$$F(t;R) = f(t) + \int\limits_0^R \frac{4\pi \left( \tau^r_r - \tau^t_t \right) r}{1 + \frac{8\pi}{r} \int\limits_0^{r} \tau^t_t r'^2 dr'} dr - \left. \frac{1}{2} \ln \left| 1 + \frac{8\pi}{r} \int\limits_0^{r} \tau^t_t r'^2 dr' \right| \right|_{r=0}^{r=R}.$$	
+	Для того, чтобы выражение выше имело смысл, потребуем 
+	$$\underset{r \rightarrow 0} \lim \left[ \frac{ \int\limits_0^{r} \tau^t_t r'^2 dr'}{r} \right]  = 0,$$
+	что означает ограничение на поведение $\tau^t_t$ как $o(r^{-2})$. Наличие в  нормировке константы, отличной от нуля, можно было бы поправить масштабированием. Отсюда
+	$$F(t;R) = f(t) + 4\pi \int\limits_0^R \frac{\left( \tau^r_r - T^t_t \right) r}{1 - \frac{8\pi}{r} \int\limits_0^{r} (-\tau^t_t) r'^2 dr'} dr - \frac{1}{2} \ln \left( 1 - \frac{8\pi}{R} \int\limits_0^{R} (-\tau^t_t) r'^2 dr' \right),$$	
+	где $f(t)$ всё также может быть принята равной нулю за счёт изменения масштабирования времени.
+	
+	\section{Квадратичная теория гравитации}
+	
+	Как мы отмечали выше (смотри теорему \ref{CentCond}), центрированность уравнений типа Эйнштейна проверяется, в целом, несложно. Если же она присутствует, то, как говорилось ранее, доказательство эквивалентности требует не более, чем показать, что на произвольном участке
+	$$\left\lbrace\begin{aligned}
+		8\pi \tau_{\mu\nu} &= R_{\mu\nu} - \frac{1}{2} R g_{\mu\nu} + \Lambda g_{\mu\nu},\\
+		0 &= F_{\lambda\xi} \left( g_{ab}; \tau_{ab}; \nabla_c \tau_{ab}; \dots \right)
+	\end{aligned}\right| 
+	\Rightarrow
+	\tau_{\mu\nu} \equiv 0.$$
+
+	
+	Первым послужит лагранжиан Гильберта-Эйнштейна
+	$$\mathcal{L}_G = \lambda + \kappa R,$$
+	для которого второй блок уравнений имеет вид
+	$$T_{\mu\nu} = 16\pi\kappa\tau_{\mu\nu} - \left(2\Lambda\kappa+\lambda\right)g_{\mu\nu},$$
+	сводящийся к 
+	$$T_{\mu\nu} = \tau_{\mu\nu}$$
+	при $\kappa = \frac{1}{16\pi}$ и $\lambda = -2\kappa\Lambda$.
+	
+	$$\mathcal{L}_G = \lambda + \kappa R + \alpha R^2 + \beta R_{ab}R^{ab}.$$
+	Её уравнения, как указывалось ранее, имеют вид
+	$$\begin{aligned}
+		-\frac{1}{2}T_{\mu\nu} &=\lambda\frac{1}{2}g_{\mu\nu}+\kappa\left(\frac{1}{2}Rg_{\mu\nu}-R_{\mu\nu}\right)+\\
+		&+\alpha\left(\frac{1}{2}R^{2}g_{\mu\nu}+2\nabla_{\mu}\nabla_{\nu}R-2\square Rg_{\mu\nu}-2RR_{\mu\nu}\right)+\\	
+		&+\beta\left(\frac{1}{2}R_{ab}R^{ab}g_{\mu\nu}+\nabla_{\mu}\nabla_{\nu}R-2R_{\mu k\nu m}R^{km}-\square R_{\mu\nu}-\frac{1}{2}g_{\mu\nu}\square R\right).
+	\end{aligned}$$
+
+	$$\begin{aligned}
+		T_{\mu\nu} &= 16\pi\kappa\tau_{\mu\nu}+\\
+		&+16\Lambda\left(2\alpha+\beta\right)\left[4\tau_{\mu\nu}-\tau g_{\mu\nu}\right]-\left(2\Lambda\kappa+\lambda\right)g_{\mu\nu}+\\
+		&+16\pi\left(2\alpha+\beta\right)\left[\nabla_{\mu}\nabla_{\nu}\tau-\square\tau g_{\mu\nu}\right]+16\pi\beta\left[-2\nabla_{k}\nabla_{\nu}\tau_{\mu}^{k}+\square\tau_{\mu\nu}\right]+\\
+		&+64\pi^{2}\left(\alpha+\beta\right)\left[-4\tau\tau_{\mu\nu}+\tau^{2}g_{\mu\nu}\right]+64\pi^{2}\beta\left[4\tau_{k\nu}\tau_{\mu}^{k}-\tau_{ab}\tau^{ab}g_{\mu\nu}\right],
+	\end{aligned}$$
+	который при взятии тех же, <<физичных>>, значений $\kappa$ и $\lambda$ принимает вид
+	$$\begin{aligned}
+		T_{\mu\nu} &= \tau_{\mu\nu}+\\
+		&+64\pi^{2}\left(\alpha+\beta\right)\left[-4\tau\tau_{\mu\nu}+\tau^{2}g_{\mu\nu}\right]+64\pi^{2}\beta\left[4\tau_{k\nu}\tau_{\mu}^{k}-\tau_{ab}\tau^{ab}g_{\mu\nu}\right].
+	\end{aligned}$$
+	Пусть теперь $T_{\mu\nu} = 0$. Тогда интересующие нас уравнения
+	$$\begin{aligned}
+		0 &= \tau_{\mu\nu}+\\
+		&+16\Lambda\left(2\alpha+\beta\right)\left[4\tau_{\mu\nu}-\tau g_{\mu\nu}\right]+\\
+		&+16\pi\left(2\alpha+\beta\right)\left[\nabla_{\mu}\nabla_{\nu}\tau-\square\tau g_{\mu\nu}\right]+16\pi\beta\left[-2\nabla_{k}\nabla_{\nu}\tau_{\mu}^{k}+\square\tau_{\mu\nu}\right]
+	\end{aligned}$$
+	имеют след
+	$$0 = \tau - 32\pi\left(3\alpha+\beta\right)\square\tau.$$
+	Подозрительное совпадение его с уравнением Клейна-Гордона, к несчастью, не случайно. Как было показано в работе \cite{Stelle}, при  линеаризации данной теории возникают возникают поправки к полю точечной массы, которые можно интерпретировать как обмен виртульными частицами массивными частицами спинов $0$ и $2$ с масами, квадраты которх обратно пропорциональны $3\alpha+\beta$ и $\beta$ соответственно. Однако интересющий нас уровень строгости не позволяет прямое использование данных выводов, чтобы сделать заключение о существовании нетривиальных решений.
+	
+	
+	\section{Заключение}
+	
+	
+	\printbibliography[title={Список литературы}]
+	
+	
+\end{document}
