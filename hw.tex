@@ -1,0 +1,91 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\def\stackbelow#1#2{\underset{\displaystyle\overset{\displaystyle\shortparallel}{#2}}{#1}}
+\usepackage[T2A]{fontenc}    
+\usepackage[utf8]{inputenc} 
+\usepackage{graphicx}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage{float}
+
+\usepackage[english,russian]{babel}
+\title{Домашнее задание по программированию}
+\author{Галина Прилипко, 204 гр.}
+\begin{document}
+\maketitle
+\begin{abstract}
+  Это вводный абзац в начале документа.
+\end{abstract}
+
+\section{10 формул}
+
+Здесь может быть текст, в котором я могу цитировать других авторов. Например, я хочу упоминуть статью про черную дыру в центре М87 \cite{M87}. Или если например цитата из статьи про золотых рыбок \cite{goldfish}.
+Или статья про импорт древесины в северную Ирландию \cite{ancient}.
+
+формула 1: 
+$\ V_i(t+\delta t) = V_i(t)+\delta t J(t) \frac{S^i_surface}{\sum_{j=1}^{n} S^j_surface}$
+
+формула 2: 
+$\frac{d V_1}{d t} = J(t) \frac{V_1^{2/3}}{\sum_{i=1}^{n} V_1^{2/3}}$
+
+формула 3: 
+$\frac{dV_i}{dt}= J(t) \frac{4 \pi r_n^2}{4 \pi \sum_{j=1}^{n}{r_j^2}}$
+
+формула 4: 
+$\frac{d(\frac{4\pi r_i^3}{3})}{dt}=\ J(t)\frac{r_i^2}{\sum_{j=1}^{n}r_j^2}$
+
+формула 5: 
+$\frac{dr_i}{dt}=\ J(t)\frac{1}{4\pi\sum_{j=1}^{n}r_j^2}$
+
+формула 6: 
+$\ V_i(t+\delta t) = V_i(t)+\delta t J(t) \frac{S^i_surface}{\sum_{j=1}^{n} S^j_surface}$
+
+у меня закончились формулы из курсовой, поэтому далее пойдут просто какие-то формулы
+формула 7: 
+$\ E_y = \frac{\hbar^2}{2 I} \stackbelow{J}{1} (J+1)$
+
+формула 8: 
+\begin{equation*}
+ \begin{cases}
+   \frac{\partial u}{\partial t} + x^2 \frac{\partial^2 u}{\partial x^2} = a, 
+   \\
+   u\Biggr|_{1} = 1 - x^2.
+ \end{cases}
+\end{equation*}
+
+формула 9: 
+$ grad(u) = \nabla u = \vec{i} \frac{\partial u}{\partial x} + \vec{j} \frac{\partial u}{\partial y}$
+
+формула 10: 
+$\begin{pmatrix}
+  D_x\\
+  D_y\\
+  D_z
+\end{pmatrix}
+= \epsilon_0
+\begin{pmatrix}
+  \ \epsilon_x & 0 & 0\\
+  \ 0 & \epsilon_y & 0\\
+  \ 0& 0 & \epsilon_z
+\end{pmatrix}
+\begin{pmatrix}
+  E_x\\
+  E_y\\
+  E_z
+\end{pmatrix}$
+
+
+
+\section{Рисунок}
+Здесь показан график изменения обьемов дроплетов 
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.5\textwidth]{fig1.png}
+\caption{\label{fig:fig1}Это график из моей курсовой}
+\end{figure}
+
+\section{3 библиографические ссылки}
+\bibliographystyle{alpha}
+\bibliography{bib}
+\end{document}
