@@ -1,0 +1,112 @@
+\documentclass[a4paper, 10pt]{article}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian,english]{babel}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\begin{document}
+\section{Начальные данные:}
+\subsection{Ковариантная метрика:}
+$$\left[\begin{matrix}-1 + \frac{r_{0}}{r} & 0 & 0 & 0\\0 & \frac{1}{1 - \frac{r_{0}}{r}} & 0 & 0\\0 & 0 & r^{2} & 0\\0 & 0 & 0 & r^{2} \sin^{2}{\left(\theta \right)}\end{matrix}\right]$$
+\section{Базовая геометрия:}
+\subsection{Контравариантная метрика:}
+$$\left[\begin{matrix}- \frac{r}{r - r_{0}} & 0 & 0 & 0\\0 & \frac{r - r_{0}}{r} & 0 & 0\\0 & 0 & \frac{1}{r^{2}} & 0\\0 & 0 & 0 & \frac{1}{r^{2} \sin^{2}{\left(\theta \right)}}\end{matrix}\right]$$
+\subsection{Символы Кристоффеля II рода:}
+$$\Gamma^{t}_{t t} = \Gamma^{t}_{t t} = 0$$
+$$\Gamma^{t}_{r t} = \Gamma^{t}_{t r} = \frac{r_{0}}{2 r \left(r - r_{0}\right)}$$
+$$\Gamma^{t}_{r r} = \Gamma^{t}_{r r} = 0$$
+$$\Gamma^{t}_{\theta t} = \Gamma^{t}_{t \theta} = 0$$
+$$\Gamma^{t}_{\theta r} = \Gamma^{t}_{r \theta} = 0$$
+$$\Gamma^{t}_{\theta \theta} = \Gamma^{t}_{\theta \theta} = 0$$
+$$\Gamma^{t}_{\phi t} = \Gamma^{t}_{t \phi} = 0$$
+$$\Gamma^{t}_{\phi r} = \Gamma^{t}_{r \phi} = 0$$
+$$\Gamma^{t}_{\phi \theta} = \Gamma^{t}_{\theta \phi} = 0$$
+$$\Gamma^{t}_{\phi \phi} = \Gamma^{t}_{\phi \phi} = 0$$
+$$\Gamma^{r}_{t t} = \Gamma^{r}_{t t} = \frac{r_{0} \left(r - r_{0}\right)}{2 r^{3}}$$
+$$\Gamma^{r}_{r t} = \Gamma^{r}_{t r} = 0$$
+$$\Gamma^{r}_{r r} = \Gamma^{r}_{r r} = - \frac{r_{0}}{2 r \left(r - r_{0}\right)}$$
+$$\Gamma^{r}_{\theta t} = \Gamma^{r}_{t \theta} = 0$$
+$$\Gamma^{r}_{\theta r} = \Gamma^{r}_{r \theta} = 0$$
+$$\Gamma^{r}_{\theta \theta} = \Gamma^{r}_{\theta \theta} = - r + r_{0}$$
+$$\Gamma^{r}_{\phi t} = \Gamma^{r}_{t \phi} = 0$$
+$$\Gamma^{r}_{\phi r} = \Gamma^{r}_{r \phi} = 0$$
+$$\Gamma^{r}_{\phi \theta} = \Gamma^{r}_{\theta \phi} = 0$$
+$$\Gamma^{r}_{\phi \phi} = \Gamma^{r}_{\phi \phi} = \left(- r + r_{0}\right) \sin^{2}{\left(\theta \right)}$$
+$$\Gamma^{\theta}_{t t} = \Gamma^{\theta}_{t t} = 0$$
+$$\Gamma^{\theta}_{r t} = \Gamma^{\theta}_{t r} = 0$$
+$$\Gamma^{\theta}_{r r} = \Gamma^{\theta}_{r r} = 0$$
+$$\Gamma^{\theta}_{\theta t} = \Gamma^{\theta}_{t \theta} = 0$$
+$$\Gamma^{\theta}_{\theta r} = \Gamma^{\theta}_{r \theta} = \frac{1}{r}$$
+$$\Gamma^{\theta}_{\theta \theta} = \Gamma^{\theta}_{\theta \theta} = 0$$
+$$\Gamma^{\theta}_{\phi t} = \Gamma^{\theta}_{t \phi} = 0$$
+$$\Gamma^{\theta}_{\phi r} = \Gamma^{\theta}_{r \phi} = 0$$
+$$\Gamma^{\theta}_{\phi \theta} = \Gamma^{\theta}_{\theta \phi} = 0$$
+$$\Gamma^{\theta}_{\phi \phi} = \Gamma^{\theta}_{\phi \phi} = - \frac{\sin{\left(2 \theta \right)}}{2}$$
+$$\Gamma^{\phi}_{t t} = \Gamma^{\phi}_{t t} = 0$$
+$$\Gamma^{\phi}_{r t} = \Gamma^{\phi}_{t r} = 0$$
+$$\Gamma^{\phi}_{r r} = \Gamma^{\phi}_{r r} = 0$$
+$$\Gamma^{\phi}_{\theta t} = \Gamma^{\phi}_{t \theta} = 0$$
+$$\Gamma^{\phi}_{\theta r} = \Gamma^{\phi}_{r \theta} = 0$$
+$$\Gamma^{\phi}_{\theta \theta} = \Gamma^{\phi}_{\theta \theta} = 0$$
+$$\Gamma^{\phi}_{\phi t} = \Gamma^{\phi}_{t \phi} = 0$$
+$$\Gamma^{\phi}_{\phi r} = \Gamma^{\phi}_{r \phi} = \frac{1}{r}$$
+$$\Gamma^{\phi}_{\phi \theta} = \Gamma^{\phi}_{\theta \phi} = \frac{1}{\tan{\left(\theta \right)}}$$
+$$\Gamma^{\phi}_{\phi \phi} = \Gamma^{\phi}_{\phi \phi} = 0$$
+\subsection{Тензор кривизны Римана (4-ковариантный):}
+
+С учётом симметрий:
+$$R_{abcd}=-R_{bacd}=-R_{abdc}=R_{cdab}$$
+и первого тождества Бианки:
+$$R_{abcd}+R_{acdb}+R_{adbc}=0$$
+его независимые компоненты имеют вид:
+
+$$R_{t r t r} = - \frac{r_{0}}{r^{3}}$$
+$$R_{t r t \theta} = 0$$
+$$R_{t r t \phi} = 0$$
+$$R_{t r r \theta} = 0$$
+$$R_{t r r \phi} = 0$$
+$$R_{t r \theta \phi} = 0$$
+$$R_{t \theta t \theta} = \frac{r_{0} \left(r - r_{0}\right)}{2 r^{2}}$$
+$$R_{t \theta t \phi} = 0$$
+$$R_{t \theta r \theta} = 0$$
+$$R_{t \theta r \phi} = 0$$
+$$R_{t \theta \theta \phi} = 0$$
+$$R_{t \phi t \phi} = \frac{r_{0} \left(r - r_{0}\right) \sin^{2}{\left(\theta \right)}}{2 r^{2}}$$
+$$R_{t \phi r \phi} = 0$$
+$$R_{t \phi \theta \phi} = 0$$
+$$R_{r \theta r \theta} = - \frac{r_{0}}{2 r - 2 r_{0}}$$
+$$R_{r \theta r \phi} = 0$$
+$$R_{r \theta \theta \phi} = 0$$
+$$R_{r \phi r \phi} = - \frac{r_{0} \sin^{2}{\left(\theta \right)}}{2 r - 2 r_{0}}$$
+$$R_{r \phi \theta \phi} = 0$$
+$$R_{\theta \phi \theta \phi} = r r_{0} \sin^{2}{\left(\theta \right)}$$
+\subsection{Скалярный квадрат тензора Римана:}
+$$ R_{abcd}R^{abcd} = \frac{12 r_{0}^{2}}{r^{6}}$$
+\subsection{Тензор Риччи (ковариантный):}
+$$R_{t t} = R_{t t} = 0$$
+$$R_{r t} = R_{t r} = 0$$
+$$R_{r r} = R_{r r} = 0$$
+$$R_{\theta t} = R_{t \theta} = 0$$
+$$R_{\theta r} = R_{r \theta} = 0$$
+$$R_{\theta \theta} = R_{\theta \theta} = 0$$
+$$R_{\phi t} = R_{t \phi} = 0$$
+$$R_{\phi r} = R_{r \phi} = 0$$
+$$R_{\phi \theta} = R_{\theta \phi} = 0$$
+$$R_{\phi \phi} = R_{\phi \phi} = 0$$
+\subsection{Скалярный квадрат тензора Риччи:}
+$$ R_{ab}R^{ab} = 0$$
+\subsection{Cкалярная кривизна:}
+$$ R = 0$$
+\subsection{Тензор Эйнштейна:}
+$$G_{t t} = G_{t t} = 0$$
+$$G_{r t} = G_{t r} = 0$$
+$$G_{r r} = G_{r r} = 0$$
+$$G_{\theta t} = G_{t \theta} = 0$$
+$$G_{\theta r} = G_{r \theta} = 0$$
+$$G_{\theta \theta} = G_{\theta \theta} = 0$$
+$$G_{\phi t} = G_{t \phi} = 0$$
+$$G_{\phi r} = G_{r \phi} = 0$$
+$$G_{\phi \theta} = G_{\theta \phi} = 0$$
+$$G_{\phi \phi} = G_{\phi \phi} = 0$$
+\end{document}
