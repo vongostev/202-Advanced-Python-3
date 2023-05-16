@@ -1,0 +1,56 @@
+\documentclass{article}
+\usepackage[T2A]{fontenc}
+\usepackage[english, russian]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+
+\title{Рассуждения об интегралах}
+
+\begin{document}
+\maketitle
+
+Рассмотрим интеграл
+ $$\int_1^2\frac{xdx}{1-x^2}=\frac{1}{2}\int_1^2\frac{d(x^2)}{1-x^2}=-\frac{1}{2}\int_1^2\frac{d(1-x^2)}{1-x^2}=-\frac{1}{2}\ln|1-x^2|\Big|_1^2=$$
+ $$=-\frac12\ln3+\lim\limits_{x\to1}\frac12\ln|1-x^2|=-\infty,$$
+данный интеграл является несобственным интегралом второго рода, в нем подынтегральная функция не ограничена в нижнем пределе интегрирования, и он расходится.
+
+Следующий интеграл вычислим  интегрированием по частям:
+$$\int_0^{e-1}\ln(x+1)dx=x\cdot\ln(x+1)\Big|_0^{e-1}-\int_0^{e-1}xd(\ln(x+1))=$$
+$$=(e-1)\ln e-0\cdot\ln 1-\int_0^{e-1}\frac{xdx}{x+1}=$$
+$$=e-1-\int_0^{e-1}\frac{x+1-1}{x+1}dx=e-1-\int_0^{e-1}dx+\int_0^{e-1}\frac{dx}{x+1}=$$
+$$=e-1-(e-1)+\int_0^{e-1}\frac{d(x+1)}{x+1}=\ln(x+1)\Big|_0^{e-1}=\ln e-\ln 1=1.$$
+
+Рассмотрим интеграл
+\begin{equation}\label{eq:1}
+\int_4^9\frac{2\sqrt{x}}{\sqrt{x}+1}dx
+\end{equation}
+Сделаем замену: $\sqrt{x}+1=t$, тогда $dt=d(\sqrt{x}+1)=\frac{dx}{2\sqrt{x}}=\frac{dx}{2(t-1)}$, откуда $dx=2(t-1)dt$. Получаем, что интеграл~\eqref{eq:1} равен
+ $$\int_3^4\frac{2(t-1)\cdot 2(t-1)dt}{t}=4\int_3^4\frac{t^2-2t+1}{t}dt=4\int_3^4\left(t-2+\frac{1}{t}\right)dt=$$
+ $$=4\left(\frac{t^2}{2}-2t+\ln|t|\right)\Big|_3^4=4\left(8-8+\ln4-\frac{9}{2}+6-\ln3\right)=6+4\ln\frac43.$$
+ 
+Решим занесением под дифференциал:
+$$\int_1^e\frac{\ln^3x}{x}dx=\int_1^e \ln^3xd(\ln x)=\frac{\ln^4x}{4}\Big|_1^e=\frac14-0=\frac14.$$
+ 
+Рассмотрим интеграл $\int_0^{\pi/4}x \cdot \arcsin 2x dx$. Данный интеграл записан некорректно: $\arcsin 2x$ не существует в окрестности точки $\pi/4$ ($2x=\pi/2>1$). Построим график этой функции на рис.~\ref{graph1}:
+
+\begin{figure}
+\centering
+\includegraphics[width=7cm]{xArcSin2x.jpg}
+\caption{График функции $\int_0^{x}x \cdot \arcsin 2x dx$.}
+\label{graph1}
+\end{figure}
+
+Для подготовки данного файла была использована книга~\cite{lvov}, а также книги~\cite{kudr, demid}
+
+\begin{thebibliography}{9}
+
+\bibitem{lvov}  Львовский С.М., Набор и верстка в пакете \LaTeX / 3-е издание, исправленное и дополненное. --- Москва : Московский центр непрерывного математического образования. --- 2003. --- С. 448.
+
+\bibitem{kudr} Кудрявцев Н.Л., Лекции по математическому анализу. Часть I: Учебное пособие. --- М. :  ООО ``Сам полиграфист'',  2021. --- 256 с.
+
+\bibitem{demid} Демидович Б.П., Сборник задач и упражнений по математическому анализу: Учебное пособие. --- 18-е изд., испр. --- М. : Изд-во Моск. ун-та, ЧеРо, 1997. --- 624 с.
+
+\end{thebibliography}
+ 
+\end{document} 
